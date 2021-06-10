@@ -1,6 +1,6 @@
-# # within test-my_lm.R
+# within test-my_lm.R
 data(my_gapminder)
- test_that("my_lm returns a numeric Estimate", {
+test_that("my_lm returns a numeric Estimate", {
         expect_is(my_lm(lifeExp ~ gdpPercap + continent, data = my_gapminder)$Estimate,"matrix")
 })
  # test_that("my_lm returns a numeric Estimate", {

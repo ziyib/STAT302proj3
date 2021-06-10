@@ -1,6 +1,6 @@
 Package: STAT302proj3
 Title: Package Development for Project 3, Stat302
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Leqi",
            family = "Wang",
@@ -14,16 +14,9 @@ Authors@R:
     )
 Description: This package is created for the project3, 
             stat302 at University of Washington. 
-License: GPL-3
+License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-Depends: 
-    R (>= 2.10)
-VignetteBuilder: knitr
+
