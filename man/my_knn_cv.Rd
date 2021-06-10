@@ -23,7 +23,7 @@ and cv_err as the numeric with the cross-validation misclassification error
 This function predict output using k-Nearest Neighbors Cross-Validation algorithms.
 }
 \examples{
-my_penguins <- tidyr::drop_na(my_penguins)
+my_penguins <- drop_na(my_penguins)
 my_result_1 <- my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 1, k_cv = 5 )
 my_result_2 <- my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 5 )
 train_err_1 <- sum(as.numeric(my_penguins$species != my_result_1$class)) / nrow(my_penguins)
