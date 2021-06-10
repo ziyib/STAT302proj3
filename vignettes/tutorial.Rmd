@@ -87,4 +87,20 @@ p-value is 3.017639e-161 is significantly smaller than 0.05.Thus, we have enough
 The model is not optimal. As the x-axis represents the actual lines, and the y axis represents the fitted value. The slope of the line would represent the percent of precision of the fitted value to the actual values. Here, the slope of the graph does not appear to be straight, which means that this model fit is not optimal.
 
 # Tutorial for my_knn_cv
+```{r}
+#A tutorial for my_knn_cv using my_penguins.
+my_table <- data.frame()
+my_penguins <- na.omit(my_penguins)
+for(i in 1:10) {
+  my_result <- my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = i, k_cv = 5 )
+  my_table[1,i] <- my_result$cv_err
+  my_table[2,i] <- sum(as.numeric(my_penguins$species != my_result$class)) / nrow(my_penguins)
+}
+colnames(my_table) <- c("k_nn = 1", "k_nn = 2", "k_nn = 3", "k_nn = 4", "k_nn = 5", "k_nn = 6", "k_nn = 7", "k_nn = 8", "k_nn = 9", "k_nn = 10")
+rownames(my_table) <- c("cv_err", "training_err")
+```
+
+In the table, when k_nn = 1, there are both the smallest cv error and the training error, so k_nn = 1 is the best model when k_cv = 5. 
+Cross validation is a statistical method that used to check how accurately our model can predict the result. 
+
 # Tutorial for my_rf_cv
