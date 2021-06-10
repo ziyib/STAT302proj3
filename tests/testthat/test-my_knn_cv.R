@@ -1,24 +1,28 @@
-# within test-my_knn_cv.R
-train <- my_penguins %>%
-  drop_na() %>%
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
-cl <- my_penguins %>%
-  drop_na() %>%
-  select(species)
 
-test_that("my_t.test works mathematically", {
-  expect_type(my_knn_cv(train, cl, 5, 5), "list")
+my_penguins <- drop_na(my_penguins)
+
+test_that("my_knn_cv returns a numeric Estimate", {
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 1, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 2, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 3, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 4, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 6, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 7, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 8, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 9, k_cv = 5 ),"list")
+        expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 10, k_cv = 5 ),"list")
 })
 
-test_that("non_numeric k_nn and k_cv throws error", {
-  expect_error(my_knn_cv(train, cl, "5", 5))
-  expect_error(my_knn_cv(train, cl, 5, "5"))
-})
-
-test_that("train should be dataframe, otherwise throws error", {
-  expect_error(my_knn_cv(as.matrix(train), cl, 5, 5))
-})
-
-
-
-
+# test_that("my_knn_cv returns a numeric Estimate", {
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 1 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 2 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 3 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 4 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 5 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 6 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 7 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 8 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 9 ),"list")
+#         expect_is(my_knn_cv(train = my_penguins, cl = my_penguins$species, k_nn = 5, k_cv = 10 ),"list")
+# })
