@@ -49,5 +49,42 @@ For the third t-test, we observe P = 0.04661438. Thus we  have sufficient eviden
 For the second t-test, we observe P = 0.9533856 Thus  we do not have sufficient evidence to reject the null hypothesis. Therefore, we cannot conclude that the real mean life expectancy is smaller than 60.
 
 # Tutorial for my_lm
+```{r}
+#tutorial for my_lm
+#Generate a regression using life Expectancy as your response variable and gdp Percaption and continent as explanatory variables
+lm_fit <- my_lm(lifeExp ~gdpPercap + continent, data = my_gapminder)
+
+#Write the hypothesis test associated with the gdpPercap coefficient.
+my_t_test(x= my_gapminder$gdpPercap, alternative="less", mu = 4.452704e-04)
+
+#predict the fitted values 
+my_estimate <- lm_fit$Estimate
+matrix <- model.matrix(lifeExp ~gdpPercap + continent, data = my_gapminder)
+y_hat <- matrix %*% as.matrix(my_estimate)
+df <- data.frame("actual" = my_gapminder$lifeExp, "fitted" = y_hat, "continent" = my_gapminder$continent)
+#plot the Actual against Fitted values.
+library(ggplot2)
+x <- my_gapminder$gdpPercap
+y <- df$y_hat
+fitting_plot <- ggplot(df, aes(x=x, y=y, color = continent)) +
+        ggtitle(label = "Actual vs Fitted Values") +
+        geom_point(aes(x = actual, y = fitted)) +
+        xlab(label = "Actual value") +
+        ylab(label = "Fitted value") +
+        geom_abline(slope = 1, intercept = 0) +
+        theme_bw() 
+        # geom_line(aes(x = x, y = fitted, col="Fitted value",lwd = 0.1)) 
+        # labs(subtitle = paste("Testing Error:", round(test_err_k, 3))) +
+        # theme_bw()
+fitting_plot
+```
+1. interpret the gdpPercap coefficient: 
+The coefficient of gdpPercap is 4.452704e-04 which means that for every one unit of increase in gdp Per capital, life Expectancy will increase 4.452704e-04.
+2. interpret the results:
+the gdpPercap hypothesis test using a p-value cut-off of a = 0.05.
+p-value is 3.017639e-161 is significantly smaller than 0.05.Thus, we have enough evidence to reject that the null hypothesis that the mu of gdpPerCap is 4.452704e-04.
+3.Interpret the Actual vs. Fitted values plot:
+The model is not optimal. As the x-axis represents the actual lines, and the y axis represents the fitted value. The slope of the line would represent the percent of precision of the fitted value to the actual values. Here, the slope of the graph does not appear to be straight, which means that this model fit is not optimal.
+
 # Tutorial for my_knn_cv
 # Tutorial for my_rf_cv
