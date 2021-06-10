@@ -8,8 +8,6 @@
 #' Otherwise, the function should throw an informative error asking you to try again.
 #' @param  mu a number indicating the null hypothesis value of the mean.
 #'
-#' @import dplyr class tidyr
-#'
 #' @keywords inference
 #'
 #' @return test_stat represents the numeric test statistic, df represents the degrees of freedom.

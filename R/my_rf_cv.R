@@ -14,7 +14,7 @@
 #'
 #' @export
 my_rf_cv <- function(k) {
-  dat <- penguins %>%
+  dat <- my_penguins %>%
     select(body_mass_g, bill_length_mm,
            bill_depth_mm, flipper_length_mm)
   dat <- na.omit(dat)
@@ -39,5 +39,5 @@ my_rf_cv <- function(k) {
     mse[i, 1] <- mean((predict(result, data_test[, -1]) - data_test$body_mass_g)^2)
   }
   # return CV error
-  return(list("MSE" = mean(mse)))
+  return(mean(mse))
 }
