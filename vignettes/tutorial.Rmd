@@ -3,7 +3,7 @@ title: "Project 3: STAT302project3 Package Tutorial"
 author: "Leqi Wang & Oscar Bai"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Project 3: PACKAGE_NAME Tutorial}
+  %\VignetteIndexEntry{STAT302project3 Package Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,6 +15,18 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+# Introduction
+
+This package includes 4 functions: `my_t.test`, `my_lm`, `my_knn_cv` and `my_rf_cv`, which are either for prediction or inference. First, we install the package from github and load the package using 'library()'.
+
+```{r, eval = FALSE}
+devtools::install_github("wang-leqi/STAT302proj3", build_vignette = TRUE, build_opts = c())
+```
+```{r, message = F}
 library(STAT302proj3)
 ```
+
+# Tutorial for my_t.test
+# Tutorial for my_lm
+# Tutorial for my_knn_cv
+# Tutorial for my_rf_cv
